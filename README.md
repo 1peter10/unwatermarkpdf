@@ -7,7 +7,7 @@ __Usage:__
 
     ./unwatermarkpdf.sh file.pdf "text you want to remove" _range (optional)_
 
-(For range syntax I refer to the  "cat [<page ranges>]" part of the pdftk man page.)
+(For range syntax I refer to the  "cat [\<page ranges\>]" part of the pdftk man page.)
 
 __To Do:__
 
