@@ -1,7 +1,7 @@
 # unwatermarkpdf
 A simple bash script to remove annoying watermarks in PDF on Linux or compatible systems.
 Has an option to cut of pages at begining and end of your pdf.
-Requires: pdftk, sed, bash
+Requires: `pdftk`, `sed`, `bash`
 
 __Usage:__
 
