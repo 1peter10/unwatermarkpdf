@@ -2,7 +2,7 @@
 # The following code is licensed under the GNU General Public License Version 3.0 (GPLv3)
 # You should have received a copy of the license with this software.
 #
-# Usage: ./unwatermark.sh FILENAME WATERMARK RANGE
+# Usage: ./unwatermarkpdf.sh FILENAME WATERMARK RANGE
 # RANGE is optional, e.g. 3-r3 removes first two and last two pages of the pdf
 # Uncomment last line for destructive editing.
 #
