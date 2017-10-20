@@ -7,12 +7,12 @@
 # Uncomment last line for destructive editing.
 #
 range=${3-1-end}
-mkdir .temp
-pdftk $1 cat $range output .temp/uncompressed.pdf uncompress
-cd .temp
+mkdir ~/.unwatermarkpdftemp
+pdftk $1 cat $range output ~/.unwatermarkpdftemp/uncompressed.pdf uncompress
+cd ~/.unwatermarkpdftemp
 sed -e "s/$2/ /g" <uncompressed.pdf >unwatermarked.pdf
 pdftk unwatermarked.pdf output fixed.pdf
 pdftk fixed.pdf output ../clean_$1 compress
 cd ..
-rm -r .temp
+rm -r ~/.unwatermarkpdftemp
 # mv clean_$1 $1
