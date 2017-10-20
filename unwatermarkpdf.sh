@@ -6,10 +6,15 @@
 # RANGE is optional, e.g. 3-r3 removes first two and last two pages of the pdf
 # Uncomment last line for destructive editing.
 #
+# get name of file without path
+f=$(basename $1)
+# get extension of file
+ext=`rev<<<$f | cut -f1 -d"." | rev`
+
 range=${3-1-end}
 if [ ! -f $1 ]; then
 	echo "File does not exist."
-elif [ ! ${1: -4} == ".pdf" ]; then
+elif [ ! ${ext^^} == "PDF" ]; then
 	echo "This is not a PDF"
 elif [ -z ${2+x} ]; then
 	echo "No watermark given"
@@ -19,8 +24,8 @@ else
   cd .unwatermarkpdftemp
   sed -e "s/$2/ /g" <uncompressed.pdf >unwatermarked.pdf
   pdftk unwatermarked.pdf output fixed.pdf
-  pdftk fixed.pdf output ../clean_$1 compress
+  pdftk fixed.pdf output ../clean_$f compress
   cd ..
   rm -r .unwatermarkpdftemp
-  # mv clean_$1 $1
+  # mv clean_$f $1
 fi
