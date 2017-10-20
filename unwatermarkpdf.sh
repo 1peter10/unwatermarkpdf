@@ -7,12 +7,20 @@
 # Uncomment last line for destructive editing.
 #
 range=${3-1-end}
-mkdir ~/.unwatermarkpdftemp
-pdftk $1 cat $range output ~/.unwatermarkpdftemp/uncompressed.pdf uncompress
-cd ~/.unwatermarkpdftemp
-sed -e "s/$2/ /g" <uncompressed.pdf >unwatermarked.pdf
-pdftk unwatermarked.pdf output fixed.pdf
-pdftk fixed.pdf output ../clean_$1 compress
-cd ..
-rm -r ~/.unwatermarkpdftemp
-# mv clean_$1 $1
+if [ ! -f $1 ]; then
+	echo "File does not exist."
+elif [ ! ${1: -4} == ".pdf" ]; then
+	echo "This is not a PDF"
+elif [ -z ${2+x} ]; then
+	echo "No watermark given"
+else
+  mkdir ~/.unwatermarkpdftemp
+  pdftk $1 cat $range output ~/.unwatermarkpdftemp/uncompressed.pdf uncompress
+  cd ~/.unwatermarkpdftemp
+  sed -e "s/$2/ /g" <uncompressed.pdf >unwatermarked.pdf
+  pdftk unwatermarked.pdf output fixed.pdf
+  pdftk fixed.pdf output ../clean_$1 compress
+  cd ..
+  rm -r ~/.unwatermarkpdftemp
+  # mv clean_$1 $1
+fi
