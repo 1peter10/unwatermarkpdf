@@ -12,7 +12,7 @@ __Usage:__
 (For more RANGE syntax I refer to the  "cat [\<page ranges\>]" part of the pdftk man page.)
 
 __Limitations:__
-- does not work with a path to the file you want to change (therefore please put unwatermarkpdf.sh in your $PATH or the same folder as the PDF file you want to "unwatermark")
+- does work with a path to the file you want to change, but the cleaned PDF will be placed in the folder you are in at the time of execution 
 - one file at a time only
 
 __To Do:__
